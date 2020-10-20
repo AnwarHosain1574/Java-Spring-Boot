@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Student Management System</title>
+	<!--/*/ <th:block th:include="layouts/styles :: styles"></th:block> /*/-->
+</head>
+<body>
+	<div class="container mt-4">
+		<h3>List of Registered Student</h3>
+		<h3><a href="/" class="btn btn-info"> Add</a></h3>
+		<table class="table table-stripped">
+			  <tr>
+			    <th>Serial</th>
+			    <th>Full Name</th>
+			    <th>Email</th>
+			    <th>Action</th>    
+			  </tr>
+			  <tr th:each="std, status: ${stdlist}">
+			    <td th:text="${status.index + 1}"></td>
+			    <td th:text="${std.first_name}+ ' ' + ${std.last_name} "></td>
+			    <td th:text="${std.email}"></td>
+			    <td>
+			    	<a th:href="@{'/student/Edit/'+${std.id}}" class="btn btn-primary" >Edit</a>
+			    	<a th:href="@{'/student/delete/'+${std.id}}" class="btn btn-warning" >Delete</a>
+			    </td>
+			  </tr>
+			</table>
+
+	</div>
+	<!--/*/ <th:block th:include="layouts/scripts :: scripts"></th:block> /*/-->
+</body>
+</html>
